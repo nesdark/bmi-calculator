@@ -1,0 +1,334 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+:root {
+  font-size: 62.5%;
+
+  /* ---- COLORS ---- */
+
+  --red: hsla(0, 86%, 59%, 1);
+
+  --blue: hsl(194, 97%, 31%);
+  --light-blue: hsl(194, 97%, 41%);
+  --dark-blue: hsl(231, 80%, 8%);
+  --dark-green: hsl(170, 100%, 14%);
+  --dark-cyan: hsl(194, 68%, 15%);
+
+  --white: hsl(0, 0%, 100%);
+  --gray: rgba(73, 80, 87, 0.5);
+  --light-gray: hsl(212, 23%, 89%);
+  --dark-gray: hsl(210, 11%, 15%);
+
+  /* FONTS */
+  --ff-body: 'Roboto';
+  --fw-bold: 700;
+  --fw-regular: 400;
+  --fs-big: 3.2rem;
+  --fs-medium: 1.6rem;
+  --fs-small: 1.4rem;
+
+  --line-height-big: 4rem;
+  --line-height-medium: 2rem;
+  --line-height-small: 1.8rem;
+}
+
+body {
+  overflow: hidden;
+  font-family: var(--ff-body);
+  line-height: var(--line-height-medium);
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+
+  background-color: var(--dark-blue);
+}
+
+.root input {
+  font-family: var(--ff-body);
+}
+
+/* ERROR-BAR */
+
+#error-bar {
+  width: 100vw;
+
+  animation: bottomToTop 500ms forwards;
+
+  background: var(--red);
+
+  padding-block: 0.8rem;
+
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-medium);
+  text-align: center;
+
+  color: var(--white);
+
+  position: absolute;
+  top: 0;
+}
+
+#error-bar.active {
+  animation: topToBottom 500ms forwards;
+}
+
+#error-bar h5 {
+  animation: shake 250ms;
+  animation-delay: 250ms;
+}
+
+/* MAIN */
+
+main {
+  animation: leftToRight 600ms;
+
+  width: 100%;
+
+  max-width: 44.8rem;
+
+  background: var(--white);
+
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+
+  padding: 4.8rem 6.4rem;
+
+  border-radius: 0.6rem;
+}
+
+main h1 {
+  margin-bottom: 3.2rem;
+
+  font-size: var(--fs-big);
+  line-height: var(--line-height-big);
+
+  color: var(--dark-green);
+}
+
+main form {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+main form fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+
+  border: none;
+}
+
+main form label h4 {
+  margin-bottom: 0.8rem;
+
+  font-size: var(--fs-small);
+  font-weight: 400;
+  line-height: var(--line-height-small);
+
+  color: var(--dark-green);
+
+  text-transform: capitalize;
+}
+
+main form label input {
+  width: 100%;
+
+  background: var(--light-gray);
+
+  padding: 1.6rem;
+
+  border: 1px solid var(--gray);
+  border-radius: 0.4rem;
+
+  font-weight: 400;
+  font-size: var(--fs-medium);
+
+  color: var(--dark-gray);
+}
+
+main form label input:focus {
+  border: 1px solid var(--blue);
+  outline: none;
+}
+
+main form label input::placeholder {
+  color: var(--gray);
+}
+
+main form button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+
+  background: var(--blue);
+
+  padding: 1.6rem;
+
+  border-radius: 0.4rem;
+  border: none;
+
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-medium);
+
+  color: var(--white);
+
+  transition: 300ms;
+}
+
+main form button:hover {
+  background: var(--light-blue);
+  transition: 300ms;
+}
+
+main form button:hover img {
+  animation: rightArrowMovement 600ms forwards
+    cubic-bezier(0.48, 1.01, 0.61, 1.04) infinite;
+}
+
+/* MODAL */
+.modal,
+.modal-shadow {
+  visibility: hidden;
+  opacity: 0;
+}
+
+body.modal-open .modal-shadow {
+  visibility: visible;
+  opacity: 1;
+
+  width: 100vw;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.562);
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  transition: all 0.6s;
+}
+
+body.modal-open .modal {
+  animation: arise 600ms forwards;
+
+  visibility: visible;
+
+  width: min(40.3rem, 95%);
+
+  background: var(--white);
+
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+
+  padding: 4.8rem 6.4rem;
+
+  border-radius: 0.6rem;
+
+  position: relative;
+  top: 30%;
+  left: 50%;
+}
+
+body.modal-open .modal .close {
+  background: none;
+  border: none;
+
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
+
+  cursor: pointer;
+}
+
+body.modal-open .modal h2 {
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-big);
+  line-height: var(--line-height-big);
+
+  text-align: center;
+
+  color: var(--dark-cyan);
+}
+
+/* ANIMATION */
+@keyframes arise {
+  from {
+    transform: scale(0) translateX(-50%);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1) translateX(-50%);
+    opacity: 1;
+  }
+}
+
+@keyframes topToBottom {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bottomToTop {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes shake {
+  25% {
+    transform: translateX(-4px);
+  }
+
+  50% {
+    transform: translate(4px);
+  }
+
+  75% {
+    transform: translate(-4px);
+  }
+}
+
+@keyframes leftToRight {
+  from {
+    transform: translate(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+@keyframes rightArrowMovement {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(13px);
+  }
+}

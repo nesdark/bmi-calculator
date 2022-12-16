@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMI calculator</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <div class="root">
+      <div id="error-bar">
+        <h5 id="error-message">Only numbers are allowed</h5>
+      </div>
+      <main id="box">
+        <form>
+          <fieldset>
+            <legend>
+              <h1>BMI Calculation</h1>
+            </legend>
+            <label>
+              <h4>Weight (kg)</h4>
+              <input
+                type="text"
+                id="weight"
+                maxlength="3"
+                placeholder="75"
+                required
+              />
+            </label>
+            <label>
+              <h4>Height (cm)</h4>
+              <input
+                type="text"
+                id="height"
+                maxlength="3"
+                required
+                placeholder="165"
+              />
+            </label>
+          </fieldset>
+
+          <button id="calculateBMI">
+            Calculate BMI
+            <img
+              src="./public/right-arrow.svg"
+              alt="Icon of arrow pointing to right"
+            />
+          </button>
+        </form>
+      </main>
+    </div>
+    <div class="modal-shadow">
+      <div class="modal">
+        <button class="close">
+          <img src="./public/close.svg" alt="Icon of X, close window" />
+        </button>
+        <h2 id="bmi-message"></h2>
+      </div>
+    </div>
+    <script src="./src/script.js"></script>
+  </body>
+</html>
