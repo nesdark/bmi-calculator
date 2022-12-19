@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BMI calculator</title>
 
+    <script src="./src/script.js" type="module" defer></script>
+
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
@@ -17,7 +19,7 @@
   </head>
   <body>
     <div class="root">
-      <div id="error-bar">
+      <div id="error-bar" class="inactive">
         <h5 id="error-message">Only numbers are allowed</h5>
       </div>
       <main id="box">
@@ -66,6 +68,5 @@
         <h2 id="bmi-message"></h2>
       </div>
     </div>
-    <script src="./src/script.js"></script>
   </body>
 </html>

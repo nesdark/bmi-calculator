@@ -1,3 +1,5 @@
+import { Modal } from './modal.js';
+
 /* 
   When clicks the button
   if all the inputs are empty
@@ -12,12 +14,12 @@
     clean the inputs
 */
 // Variables
-const errorBarElement = document.querySelector('#error-bar');
+const form = document.querySelector('form');
 const buttonSend = document.querySelector('#calculateBMI');
 const buttonCloseModal = document.querySelector('.close');
 
 // Functions
-const preventReload = function (event) {
+form.onsubmit = function (event) {
   event.preventDefault();
 };
 
@@ -55,26 +57,22 @@ const checkTheInputs = function () {
 const showError = (messageOfError) => {
   const errorBarElement = document.querySelector('#error-bar');
   const messageElement = document.querySelector('#error-message');
-  errorBarElement.classList.add('active');
+  errorBarElement.classList.toggle('active');
+  errorBarElement.classList.toggle('inactive');
   messageElement.textContent = messageOfError;
 
   setTimeout(() => {
-    errorBarElement.classList.remove('active');
+    errorBarElement.classList.toggle('active');
+    errorBarElement.classList.toggle('inactive');
   }, 3000);
 };
-
-function toggleModal() {
-  const root = document.querySelector('body');
-
-  root.classList.toggle('modal-open');
-}
 
 function showTheBMI(bmi) {
   const bmiMessage = document.querySelector('#bmi-message');
 
   bmiMessage.textContent = `Your BMI is ${bmi}`;
 
-  toggleModal();
+  Modal.open();
 }
 
 const showTheModalWithTheBMI = () => {
@@ -101,15 +99,10 @@ buttonSend.addEventListener('click', () => {
   }
 });
 
-document.querySelector('form').addEventListener('submit', preventReload);
-
-buttonCloseModal.addEventListener('click', toggleModal);
+buttonCloseModal.addEventListener('click', () => Modal.close());
 
 document.addEventListener('keydown', (event) => {
-  const body = document.body;
   if (event.key == 'Escape') {
-    if (body.classList.contains('modal-open')) {
-      toggleModal();
-    }
+    Modal.close();
   }
 });
