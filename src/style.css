@@ -81,7 +81,7 @@ body {
   transition: 500ms;
 }
 
-#error-bar.active {
+.root #error-bar.active {
   animation: topToBottom 500ms forwards;
   visibility: visible;
 }
@@ -144,8 +144,6 @@ main form label h4 {
   line-height: var(--line-height-small);
 
   color: var(--dark-green);
-
-  text-transform: capitalize;
 }
 
 main form label input {
